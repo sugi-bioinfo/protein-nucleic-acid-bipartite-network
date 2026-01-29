@@ -62,7 +62,7 @@ with open(cluster_file) as f:
         pml.append(f"color {color}, {cname}")
         pml.append(f"set sphere_scale, 0.55, {cname}\n")
 
-# --- Important: ensure cartoon stays visible ---
+# --- cartoon ---
 pml.append("show cartoon, all")
 
 with open(output_pml, "w") as out:
