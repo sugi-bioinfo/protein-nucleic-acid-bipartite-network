@@ -1,0 +1,19 @@
+load ..\pdb_files\2py9.pdb
+hide everything
+show cartoon, all
+color lightpink, protein
+color lightgreen, nucleic
+set cartoon_transparency, 0.75, protein
+set cartoon_transparency, 0.75, nucleic
+bg_color white
+set ray_opaque_background, 0
+set specular, 0.1
+set cartoon_quality, 20
+set cartoon_smooth_loops, 1
+
+select Cluster_1, (chain B and resn LYS and resi 23) or (chain B and resn VAL and resi 36) or (chain B and resn ILE and resi 49) or (chain E and resn C and resi 10) or (chain E and resn U and resi 6) or (chain B and resn GLU and resi 51) or (chain E and resn C and resi 11) or (chain B and resn GLY and resi 22) or (chain B and resn ARG and resi 40) or (chain B and resn LYS and resi 32) or (chain B and resn SER and resi 50) or (chain B and resn LYS and resi 31) or (chain E and resn A and resi 8) or (chain B and resn SER and resi 27) or (chain E and resn U and resi 12) or (chain B and resn GLY and resi 26) or (chain B and resn GLY and resi 30) or (chain B and resn ASN and resi 48) or (chain E and resn C and resi 9) or (chain B and resn GLY and resi 33) or (chain B and resn ILE and resi 29) or (chain B and resn ARG and resi 57) or (chain E and resn A and resi 7) or (chain B and resn VAL and resi 25) or (chain B and resn GLY and resi 52)
+show spheres, Cluster_1
+color red, Cluster_1
+set sphere_scale, 0.55, Cluster_1
+
+show cartoon, all

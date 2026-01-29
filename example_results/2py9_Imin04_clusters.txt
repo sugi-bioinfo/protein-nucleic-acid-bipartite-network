@@ -1,0 +1,5 @@
+Cluster_1: B_SER27 E_C9 B_GLY26
+Cluster_2: B_LYS31 E_A7
+Cluster_3: B_ARG40 E_U12
+Cluster_4: E_C11 B_ILE49
+Cluster_5: B_ARG57 E_C10
