@@ -9,3 +9,84 @@ computes interaction strength, applies a threshold (Imin),
 and performs network and cluster analysis.
 
 Author: Sugirtha, Project Associate, IISC.
+
+# Protein–Nucleic Acid Bipartite Network Algorithm
+
+## Description
+This repository contains scripts to analyze protein–DNA interactions and build bipartite networks based on structural data. The workflow includes parsing PDB files, computing raw contacts, calculating interaction strengths, building bipartite graphs, and visualizing results in PyMOL.
+
+## Requirements
+- Python 3.x  
+- Packages: sys, re, math, numpy, networkx, Bio.PDB (PDBParser)  
+- PyMOL (for visualization)
+
+## How to Run
+
+1. **Parse PDB file**
+```
+python scripts/read_pdb.py ../pdb_files/xyz.pdb
+```
+Output in terminal:
+```
+Protein residues: XXX
+DNA nucleotides: YY
+```
+
+2. **Compute raw contacts**
+```
+python scripts/raw_contacts.py ../pdb_files/xyz.pdb
+```
+Output in terminal:
+```
+Protein residues: xxx  DNA nucleotides: yy
+Protein-DNA raw contacts: 
+A_xxxx I_yyyy
+A_xxxx I_yyyy
+```
+
+3. **Save raw contacts to a file**
+```
+python scripts/save_raw_contacts.py ../pdb_files/xyz.pdb ../results/xyz_raw_contacts.txt
+```
+- Results are saved in `../results/xyz_raw_contacts.txt`
+
+4. **Compute interaction strength**
+```
+python scripts/interaction_strength.py ../results/xyz_raw_contacts.txt ../results/xyz_interaction_strength.txt
+```
+- Results are saved in `../results/xyz_interaction_strength.txt`
+
+5. **Apply Imin to build bipartite edges**
+```
+python scripts/Imin.py ../results/xyz_interaction_strength.txt ../results/xyz_edges_Imin_0.3.txt 0.3
+python scripts/Imin.py ../results/xyz_interaction_strength.txt ../results/xyz_edges_Imin_0.2.txt 0.2
+python scripts/Imin.py ../results/xyz_interaction_strength.txt ../results/xyz_edges_Imin_0.4.txt 0.4
+```
+- Results are saved as separate `xyz_edges_Imin_0x.txt` files
+
+6. **Build Bipartite Graph (using edges)**
+```
+python scripts/graph_analysis.py ../results/xyz_edges_Imin_0.3.txt
+```
+- Results appear in the terminal
+
+7. **Export graph analysis results**
+```
+python scripts/graph_analysis_export.py ../results/xyz_edges_Imin_0.3.txt ../results/xyz_Imin03
+```
+- Generates text files for hubs (degree, strength) and clusters
+
+8. **Generate PyMOL visualization**
+```
+python scripts/generate_pml.py ../results/xyz_Imin03_hubs_degree.txt ../results/xyz_Imin03_hubs_strength.txt ../results/xyz_Imin03_clusters.txt ../pdb_files/xyz.pdb
+```
+Generated PyMOL scripts:
+```
+hub_degree.pml
+hub_strength.pml
+clusters.pml
+```
+
+## Notes
+- Replace `xyz` with the actual PDB ID of the structure you want to analyze.  
+- Make sure all input/output directories exist (`../pdb_files/`, `../results/`).  
