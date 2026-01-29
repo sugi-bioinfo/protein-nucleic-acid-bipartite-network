@@ -89,4 +89,5 @@ clusters.pml
 
 ## Notes
 - Replace `xyz` with the actual PDB ID of the structure you want to analyze.  
-- Make sure all input/output directories exist (`../pdb_files/`, `../results/`).  
+- Make sure all input/output directories exist (`../pdb_files/`, `../results/`).
+- The results (for given example structureI is also displayed for your refernce.
